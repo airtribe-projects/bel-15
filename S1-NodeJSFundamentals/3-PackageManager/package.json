@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "math-sqrt": "^1.0.1"
+  }
+}
