@@ -13,6 +13,7 @@
   "author": "Jay Chakra",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "math-sqrt": "*",
+    "express": "*"
   }
 }
