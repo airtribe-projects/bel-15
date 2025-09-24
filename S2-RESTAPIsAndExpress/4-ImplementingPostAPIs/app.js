@@ -1,7 +1,12 @@
 const express = require('express');
 
 const app = express();
+
 app.use(express.json()); 
+/* parses the body in JSON format
+    attaches it to the req object as req.body
+*/
+
 const logger = (req, res, next) => {
     console.log(`${req.method}: Request recieved on ${req.url}`)
     next();
@@ -69,6 +74,8 @@ app.get('/', (req, res, next) => {
     // next()
 })
 
-app.listen(3000, () => {
-    console.log("server is running on Port 3000");
+const port = 80;
+
+app.listen(port, () => {
+    console.log("server is running on Port " + port);
 });
