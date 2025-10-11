@@ -6,7 +6,6 @@ const usersRoute = require('./routes/usersRoute');
 
 const mongoose = require('mongoose')
 
-
 const app = express();
 app.use(express.json()); 
 app.use(logger);
@@ -21,13 +20,13 @@ const port = process.env.PORT || 3000;
 
 
 
-const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
+    .then(() => {
+        console.log("Connected to MongoDB")
 
-mongoose.connect(MONGODB_URI).then(() => {
-    console.log("MongoDB Started");
-    app.listen(port, () => {
-        console.log("server is running on Port " + port);
+        app.listen(port, () => {
+            console.log("server is running on Port " + port);
+        });
+    }).catch(err => {
+        console.log("Connection Error:", err)
     });
-})
-
-
