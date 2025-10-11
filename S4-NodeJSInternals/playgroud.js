@@ -13,35 +13,37 @@ In Task Queue also there are several parts
     - cleanup like closing database
 */
 
-const net = require('net');
+const fs = require('fs');
 
 
 const main = () => {
-    console.log('Start');
-    const server = net.createServer(() => {});
-    server.listen(8080, () => {
-        const port = server.address().port;
-        const socket = net.createConnection(port);
 
-        socket.on('connect', () => {    // Phase 4 (MacroTask Queue)
-            setTimeout(() => {
-                console.log('Log from timer');      // Phase 1
-            }, 0);
-            
-            socket.destroy(); // triggers close callback
+    const fsWriteCallback = (err, res) => {
+        
+        if (err) throw err;
+        console.log(res);
+  
+        setTimeout(() => {                           // Phase 1: Timer Phase
+            console.log('Log from timer');
+        }, 0);
 
-            // Immediately destroy the server
-            server.close();         // 
-            
+        fs.unlink('temp.txt', (err, data) => {           // Phase 6: Close phase
+            if (err) throw err;
+            console.log('Log from close callback');
         });
 
-        socket.on('close', () => {          //  Phase 6
-            console.log('Log from close callback'); 
-        });
-    });
+        Promise.resolve().then(() => {
+            console.log("Log from promise");
+        })
+    }
+
+
+    
+    fs.writeFile('temp.txt', 'Hello', fsWriteCallback);
 }
 
-main()
+main();
+
 
 
 
