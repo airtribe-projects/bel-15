@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongodb-memory-server": "^10.2.3"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
+  }
+}

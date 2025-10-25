@@ -1,0 +1,41 @@
+{
+  "name": "airtribe-package-manager",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb-memory-server": "^10.1.4",
+    "mongoose": "^8.15.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon app.js"
+  },
+  "jest": {
+    "collectCoverage": true, 
+    "coverageDirectory": "coverage", 
+    "coverageReporters": [
+      "text",
+      "html", 
+      "lcov"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 85,
+        "statements": 85
+      }
+    }
+  },
+  "author": "Jay Chakra",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9"
+  }
+}
