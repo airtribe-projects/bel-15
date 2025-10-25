@@ -5,10 +5,11 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET
 const usersModel = require("../models/usersModel");
 
-const registerUser = async (reqUser) => {
-    const user = {...reqUser};
-    user.password = bcrypt.hashSync(user.password, saltRounds);
-    const dbUser = await usersModel.create(user);
+const registerUser = async (user) => {
+    const tmp = {...user};
+
+    tmp.password = bcrypt.hashSync(user.password, saltRounds);
+    const dbUser = await usersModel.create(tmp);
     return dbUser;
 };
  
@@ -31,7 +32,7 @@ const loginUser = async (email, password) => {
     if (!isSamePassword) {
         throw new Error("Invalid Password");
     }
-    
+
     const token = jwt.sign({email: dbUser.email, role: dbUser.role}, JWT_SECRET, {expiresIn: "1h"});
 
     return token;
