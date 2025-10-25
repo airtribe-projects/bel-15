@@ -48,7 +48,7 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           const fs = require('fs');
-          const testOutput = fs.readFileSync('./S6-UnitTesting/7-ContinuousIntegration/test_output.log', 'utf8');
+          const testOutput = fs.readFileSync('./S6-UnitTesting/5-Coverage/test_output.log', 'utf8');
           
           const comment = `## Test Results
 
