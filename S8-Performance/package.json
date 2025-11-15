@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "profile": "clinic flame -- node 1-profiling.js"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "clinic": "^13.0.0"
+  }
+}
